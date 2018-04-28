@@ -4,41 +4,47 @@ import java.util.ArrayList;
 
 public class StepHandler extends MouseMotionAdapter implements KeyListener,ActionListener{
     double angle;
+    static double speed=10;
     MainPanel panel=Main.panel;
     Snake snake=panel.snake;
-
+    ArrayList<Oval> positions = snake.positions;
+    double DifX;
+    double DifY;
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        move();
+        moveSnake();
         Main.panel.repaint();
     }
 
-    public void move(){
-        double directionX = Math.sin(angle)*10;
-        double directionY = Math.cos(angle)*10;
-        ArrayList<Oval> positions = snake.positions;
+    public void moveSnake(){
+        double directionX = Math.sin(angle)*speed;
+        double directionY = Math.cos(angle)*speed;
+
         Oval temp = positions.remove(positions.size()-1);
         Oval first = positions.get(0);
-        temp.setX(first.getX()+((int)directionX));
-        temp.setY(first.getY()+((int)directionY));
+        temp.setX(first.getX()+((int)directionX*2));
+        temp.setY(first.getY()+((int)directionY*2));
         positions.add(0,temp);
 
 
         double CenterX=Main.panel.getWidth()/2;
         double CenterY=Main.panel.getHeight()/2;
+        DifX=positions.get(0).getX()-CenterX;
+        DifY=positions.get(0).getY()-CenterY;
 
-        double DifX=positions.get(0).getX()-CenterX;
-        double DifY=positions.get(0).getY()-CenterY;
-
-        for (Oval oval:
-             positions) {
-            oval.setX(oval.getX()-(int)DifX);
-            oval.setY(oval.getY()-(int)DifY);
+        for (Food food:Food.foods){
+            food.x-=(int)directionX;
+            food.y-=(int)directionY;
         }
-        panel.repaint();
+        for (Oval oval:
+                positions) {
+            oval.setX((int) (oval.getX()-DifX));
+            oval.setY((int) (oval.getY()-DifY));
+        }
 
     }
+
 
     @Override
     public void mouseMoved(MouseEvent e) {

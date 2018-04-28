@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.Scanner;
 
 public class Main {
     static MainPanel panel;
@@ -24,6 +25,11 @@ public class Main {
         frame.addKeyListener(handler);
         Timer timer = new Timer(50,handler);
         timer.start();
+        Scanner scan = new Scanner(System.in);
+        while(true){
+            StepHandler.speed=scan.nextInt();
+        }
+
 
     }
 }

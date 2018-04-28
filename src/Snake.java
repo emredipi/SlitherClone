@@ -14,8 +14,8 @@ public class Snake {
         for (int i=0;i<100;i++){
             positions.add(
                     new Oval(
-                            (panel.getWidth()/2)+i*10,
-                            (panel.getHeight()/2)+i*10
+                            (panel.getWidth()/2)+i*5-ovalWidth,
+                            (panel.getHeight()/2)+i*5-ovalWidth
                     )
             );
         }
