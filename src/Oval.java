@@ -1,7 +1,6 @@
 public class Oval {
     private int x;
     private int y;
-    private int length;
 
     public Oval(int x, int y) {
         setX(x);
