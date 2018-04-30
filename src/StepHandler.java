@@ -80,9 +80,9 @@ public class StepHandler extends MouseMotionAdapter implements KeyListener,Actio
     @Override
     public void keyPressed(KeyEvent e) {
         if(e.getKeyCode()==KeyEvent.VK_LEFT){
-            angle+=9;
+            angle+=0.3;
         }else if(e.getKeyCode()==KeyEvent.VK_RIGHT){
-            angle-=9;
+            angle-=0.3;
         }
 
         /*
