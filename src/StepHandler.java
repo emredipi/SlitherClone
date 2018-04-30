@@ -4,16 +4,17 @@ import java.util.ArrayList;
 
 public class StepHandler extends MouseMotionAdapter implements KeyListener,ActionListener{
     double angle;
-    MainPanel panel=Main.panel;
+    MainPanel panel=Frame.panel;
     Snake snake=panel.snake;
     ArrayList<Oval> positions = snake.positions;
     double DifX;
     double DifY;
 
+
     @Override
     public void actionPerformed(ActionEvent e) {
         moveSnake();
-        Main.panel.repaint();
+        panel.repaint();
     }
 
     public void moveSnake(){
@@ -29,8 +30,8 @@ public class StepHandler extends MouseMotionAdapter implements KeyListener,Actio
         temp.setY(first.getY()+((int)directionY*2));
         positions.add(0,temp);
 
-        double CenterX=Main.panel.getWidth()/2;
-        double CenterY=Main.panel.getHeight()/2;
+        double CenterX=panel.getWidth()/2;
+        double CenterY=panel.getHeight()/2;
         DifX=positions.get(0).getX()-CenterX;
         DifY=positions.get(0).getY()-CenterY;
         panel.x-=DifX;

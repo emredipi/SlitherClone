@@ -12,8 +12,6 @@ public class MainPanel extends JPanel {
     int x = 0;
     int y = 0;
 
-
-
     MainPanel(){
         SecureRandom rand = new SecureRandom();
         for (int i=0;i<1000;i++)
@@ -72,6 +70,8 @@ public class MainPanel extends JPanel {
         for(Food food:Food.foods){
             g.setColor(FoodColors[food.width/15]);
             g.fillOval(food.x-(food.width/2),food.y-(food.width/2),food.width,food.width);
+            g.setColor(Color.BLACK);
+            g.drawOval(food.x-(food.width/2),food.y-(food.width/2),food.width,food.width);
         }
 
 
