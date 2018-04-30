@@ -7,12 +7,19 @@ public class StepHandler extends MouseMotionAdapter implements KeyListener,Actio
     MainPanel panel=Frame.panel;
     Snake snake=panel.snake;
     ArrayList<Oval> positions = snake.positions;
-    double DifX;
-    double DifY;
+
+
+
+    static int second=0;
+    static String getTime(){
+        return (second/60/24)+" : "+((second/24)%60);
+    }
+
 
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        second++;
         moveSnake();
         panel.repaint();
     }
@@ -32,8 +39,9 @@ public class StepHandler extends MouseMotionAdapter implements KeyListener,Actio
 
         double CenterX=panel.getWidth()/2;
         double CenterY=panel.getHeight()/2;
-        DifX=positions.get(0).getX()-CenterX;
-        DifY=positions.get(0).getY()-CenterY;
+        double DifX=positions.get(0).getX()-CenterX;
+        double DifY=positions.get(0).getY()-CenterY;
+
         panel.x-=DifX;
         panel.y-=DifY;
 
@@ -51,10 +59,11 @@ public class StepHandler extends MouseMotionAdapter implements KeyListener,Actio
             double Ry=head.getY()-food.y;
             double R = Math.sqrt(Rx*Rx+Ry*Ry);
 
-            if(R<=(food.width/2)+(snake.ovalWidth/2)){
+            if(R<=(food.getWidth()/2)+(snake.ovalWidth/2)){
                 food.x=-9999;
                 food.y=-9999;
                 snake.positions.add(new Oval(-9999,-9999));
+                snake.point+=food.point*food.sign;
 
                 //todo: yemi sil
                 //todo: hızı yavaşlat

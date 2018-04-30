@@ -6,7 +6,6 @@ import java.security.SecureRandom;
 
 public class MainPanel extends JPanel {
     int ovalWidth=30;
-
     Snake snake = new Snake(ovalWidth,this);
     Image bg = Toolkit.getDefaultToolkit().getImage("images/bg5.png");
     int x = 0;
@@ -18,7 +17,8 @@ public class MainPanel extends JPanel {
             Food.foods.add(new Food(
                     rand.nextInt(3000),
                     rand.nextInt(3000),
-                    rand.nextInt(4)*10
+                    rand.nextInt(3)+1,
+                    (rand.nextInt(2)==0)?1:-1
             )
         );
     }
@@ -28,17 +28,12 @@ public class MainPanel extends JPanel {
 
 
         int bg_width=10;
-
-
         for (int i=-1*bg_width;i<bg_width;i++){
             for (int j=-1*bg_width;j<bg_width;j++){
                 g.drawImage(bg,x+i*250,y+j*250,this);
             }
         }
 
-
-
-        g.setColor(Color.black);
         /*
         Graphics2D g2 = (Graphics2D)g;
         Point p = MouseInfo.getPointerInfo().getLocation();
@@ -59,21 +54,22 @@ public class MainPanel extends JPanel {
         }
 
 
-        Color FoodColors[] ={
-                Color.BLACK,
-                Color.ORANGE,
-                Color.BLUE,
-                Color.pink,
-                Color.GREEN
-        };
-        int FWcons=6;
+
         for(Food food:Food.foods){
-            g.setColor(FoodColors[food.width/15]);
-            g.fillOval(food.x-(food.width/2),food.y-(food.width/2),food.width,food.width);
-            g.setColor(Color.BLACK);
-            g.drawOval(food.x-(food.width/2),food.y-(food.width/2),food.width,food.width);
+            g.setColor(food.getColor());
+            g.fillOval(food.x-(food.getWidth()/2),food.y-(food.getWidth()/2),food.getWidth(),food.getWidth());
+
+            g.setColor(food.sign==1?Color.WHITE:Color.RED);
+            g.drawOval(food.x-(food.getWidth()/2),food.y-(food.getWidth()/2),food.getWidth(),food.getWidth());
         }
 
+        g.setColor(Color.BLACK);
+        g.fillRect(0,getHeight()-100,150,100);
+        g.setColor(Color.WHITE);
+        g.drawString("Score:    "+snake.point,20,getHeight()-80);
+        g.drawString("Length:   "+snake.positions.size(),20,getHeight()-60);
+        g.drawString("Speed:    "+snake.speed,20,getHeight()-40);
+        g.drawString("Time:     "+StepHandler.getTime() ,20,getHeight()-20);
 
 
 
