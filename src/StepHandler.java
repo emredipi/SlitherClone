@@ -62,10 +62,9 @@ public class StepHandler extends MouseMotionAdapter implements KeyListener,Actio
             if(R<=(food.getWidth()/2)+(snake.ovalWidth/2)){
                 food.x=-9999;
                 food.y=-9999;
-                snake.positions.add(new Oval(-9999,-9999));
                 snake.point+=food.point*food.sign;
 
-                //todo: yemi sil
+                snake.update_length();
                 //todo: hızı yavaşlat
             }
 

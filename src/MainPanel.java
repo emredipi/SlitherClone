@@ -33,7 +33,6 @@ public class MainPanel extends JPanel {
                 g.drawImage(bg,x+i*250,y+j*250,this);
             }
         }
-
         /*
         Graphics2D g2 = (Graphics2D)g;
         Point p = MouseInfo.getPointerInfo().getLocation();
