@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class Snake {
     MainPanel panel;
     int point=0;
-    int initial_length=10;
+    int initial_length=100;
     static ArrayList<Snake> snakes = new ArrayList<Snake>();
 
 
@@ -14,22 +14,64 @@ public class Snake {
 
     Snake(int ovalWidth,MainPanel panel){
         this.panel=panel;
-        snakes.add(this);
         this.ovalWidth=ovalWidth;
         for (int i=0;i<initial_length;i++){
             positions.add(
                     new Oval(
-                            (panel.getWidth()/2)+i*10,
-                            (panel.getHeight()/2)+i*10
+                            ovalWidth+i*10,ovalWidth+i*10,ovalWidth
                     )
             );
+        }
+        snakes.add(this);
+    }
+
+    void move(double angle){
+        double directionX = Math.sin(angle)*5;
+        double directionY = Math.cos(angle)*5;
+
+        Oval temp = positions.remove(positions.size()-1);
+        Oval first = positions.get(0);
+
+        temp.x=first.getX()+directionX*2;
+        temp.y=first.getY()+directionY*2;
+        positions.add(0,temp);
+
+        Oval head = positions.get(0);
+        double DifX=head.getCenterX()-panel.getWidth()/2;
+        double DifY=head.getCenterY()-panel.getHeight()/2;
+
+        panel.x-=DifX;
+        panel.y-=DifY;
+
+        for (Oval oval: positions) {
+            oval.decrement(DifX,DifY);
+        }
+
+        for (Food food:Food.foods){
+            food.x-=directionX;
+            food.y-=directionY;
+
+
+            double Rx=head.getCenterX()-food.getCenterX();
+            double Ry=head.getCenterY()-food.getCenterY();
+            double R = Math.sqrt(Rx*Rx+Ry*Ry);
+
+            if(R<=(food.getWidth()/2)+(head.getWidth()/2)){
+                food.x=-9999;
+                food.y=-9999;
+                point+=food.point;
+                update_length();
+                //todo: yemi sil
+                //todo: hızı yavaşlat
+            }
+
         }
     }
 
     public void update_length(){
         int newsize=point/3;
         if(newsize+initial_length>positions.size()){
-            positions.add(new Oval(-9999,-9999));
+            positions.add(new Oval(-9999,-9999,ovalWidth));
         }else{
             positions.remove(positions.size()-1);
         }

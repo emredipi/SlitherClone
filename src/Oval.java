@@ -1,26 +1,22 @@
-public class Oval {
-    private int x;
-    private int y;
+import java.awt.geom.Ellipse2D;
 
-    public Oval(int x, int y) {
-        setX(x);
-        setY(y);
+public class Oval extends Ellipse2D.Double{
+
+    public Oval(int x, int y,int length) {
+        this.x=x;
+        this.y=y;
+        this.height=length;
+        this.width=length;
     }
 
-    public int getX() {
-        return x;
+    void incrementPosition(double x,double y){
+        this.x+=x;
+        this.y+=y;
+    }
+    void decrement(double x,double y){
+        this.x-=x;
+        this.y-=y;
     }
 
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
 
 }

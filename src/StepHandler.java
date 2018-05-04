@@ -6,7 +6,6 @@ public class StepHandler extends MouseMotionAdapter implements KeyListener,Actio
     double angle;
     MainPanel panel=Frame.panel;
     Snake snake=panel.snake;
-    ArrayList<Oval> positions = snake.positions;
 
 
 
@@ -20,57 +19,10 @@ public class StepHandler extends MouseMotionAdapter implements KeyListener,Actio
     @Override
     public void actionPerformed(ActionEvent e) {
         second++;
-        moveSnake();
+        snake.move(angle);
         panel.repaint();
     }
 
-    public void moveSnake(){
-        //todo: methoda parametre ekle
-        //todo int speed, boolean speed_changed
-
-        double directionX = Math.sin(angle)*4;
-        double directionY = Math.cos(angle)*4;
-
-        Oval temp = positions.remove(positions.size()-1);
-        Oval first = positions.get(0);
-        temp.setX(first.getX()+((int)directionX*2));
-        temp.setY(first.getY()+((int)directionY*2));
-        positions.add(0,temp);
-
-        double CenterX=panel.getWidth()/2;
-        double CenterY=panel.getHeight()/2;
-        double DifX=positions.get(0).getX()-CenterX;
-        double DifY=positions.get(0).getY()-CenterY;
-
-        panel.x-=DifX;
-        panel.y-=DifY;
-
-        for (Oval oval: positions) {
-            oval.setX((int) (oval.getX()-DifX));
-            oval.setY((int) (oval.getY()-DifY));
-        }
-
-        for (Food food:Food.foods){
-            food.x-=(int)directionX;
-            food.y-=(int)directionY;
-
-            Oval head = snake.positions.get(0);
-            double Rx=head.getX()-food.x;
-            double Ry=head.getY()-food.y;
-            double R = Math.sqrt(Rx*Rx+Ry*Ry);
-
-            if(R<=(food.getWidth()/2)+(snake.ovalWidth/2)){
-                food.x=-9999;
-                food.y=-9999;
-                snake.point+=food.point*food.sign;
-
-                snake.update_length();
-                //todo: hızı yavaşlat
-            }
-
-        }
-
-    }
 
 
     @Override

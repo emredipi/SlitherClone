@@ -1,37 +1,31 @@
 import java.awt.*;
+import java.awt.geom.Ellipse2D;
 import java.util.ArrayList;
 
-public class Food {
-    int x;
-    int y;
+public class Food extends Ellipse2D.Double {
     int point;
-    int sign;
-    static int Width;
 
     static Color FoodColors[] ={
+            Color.RED,
+            Color.ORANGE,
+            Color.YELLOW,
             Color.WHITE,
             Color.BLUE,
             Color.GREEN,
-            Color.YELLOW,
-            Color.ORANGE,
-            Color.RED
     };
 
     static ArrayList<Food> foods = new ArrayList<Food>();
 
-    Food(int x,int y,int point,int sign){
+    Food(double x,double y,int point,double length){
         this.x=x;
         this.y=y;
+        this.height=length;
+        this.width=length;
         this.point=point;
-        this.sign=sign;
         foods.add(this);
     }
 
-    int getWidth(){
-        return point*Width;
-    }
-
     Color getColor(){
-        return FoodColors[point-1+(sign==-1?3:0)];
+        return FoodColors[(point<0)?(point+3):(point+2)];
     }
 }

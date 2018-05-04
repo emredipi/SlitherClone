@@ -6,68 +6,56 @@ import java.security.SecureRandom;
 
 public class MainPanel extends JPanel {
     int ovalWidth=30;
+    int food_width=10;
     Snake snake = new Snake(ovalWidth,this);
     Image bg = Toolkit.getDefaultToolkit().getImage("images/bg1.png");
-    int x = 0;
-    int y = 0;
+    double x = 0;
+    double y = 0;
 
     MainPanel(){
         SecureRandom rand = new SecureRandom();
-        for (int i=0;i<1000;i++)
+        for (int i=0;i<1000;i++) {
+            int sign=(rand.nextInt(2)==0)?-1:1;
+            int point=rand.nextInt(3)+1;
             Food.foods.add(new Food(
-                    rand.nextInt(3000),
-                    rand.nextInt(3000),
-                    rand.nextInt(3)+1,
-                    (rand.nextInt(2)==0)?1:-1
-            )
-        );
+                            rand.nextInt(3000),
+                            rand.nextInt(3000),
+                            point*sign,
+                            point*food_width
+                    )
+            );
+        }
     }
+
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-
-
+        Graphics2D g2 = (Graphics2D)g;
         int bg_width=20;
         for (int i=-1*bg_width;i<bg_width;i++){
             for (int j=-1*bg_width;j<bg_width;j++){
-                g.drawImage(bg,x+i*250,y+j*250,this);
+
+                g2.drawImage(bg,(int)x+j*250,(int)y+i*250,Color.BLACK,this);
             }
         }
-        /*
-        Graphics2D g2 = (Graphics2D)g;
-        Point p = MouseInfo.getPointerInfo().getLocation();
-        Rectangle2D.Float r = new Rectangle2D.Float(10,20,50,60);
-        g2.draw(r);
-        Ellipse2D.Float r2 = new Ellipse2D.Float(this.getWidth()/2,this.getHeight()/2,10,10);
-        g2.draw(r2);
-        */
-        //todo: nesleri 2Dye çevir
-
-
 
         int i=0;
         for (Oval oval: snake.positions) {
-            g.setColor((i%10==1||i%10==0)?Color.black:new Color(255,252,78));
+            g2.setColor((i%10==1||i%10==0)?Color.black:new Color(255,252,78));
+            g2.fill(oval);
             i++;
-            g.fillOval(oval.getX()-snake.ovalWidth/2,oval.getY()-snake.ovalWidth/2,ovalWidth,ovalWidth);
         }
 
 
-
         for(Food food:Food.foods){
-            g.setColor(food.getColor());
-            g.fillOval(food.x-(food.getWidth()/2),food.y-(food.getWidth()/2),food.getWidth(),food.getWidth());
-
-            g.setColor(food.sign==1?Color.WHITE:Color.RED);
-            g.drawOval(food.x-(food.getWidth()/2),food.y-(food.getWidth()/2),food.getWidth(),food.getWidth());
+            g2.setColor(food.getColor());
+            g2.fill(food);
         }
 
 
         Graphics2D g2d = (Graphics2D) g;
         g2d.setComposite(AlphaComposite.getInstance(
                 AlphaComposite.SRC_OVER, 0.3f));
-
-
 
         g2d.setColor(Color.BLACK);
         g2d.fillRect(0,getHeight()-100,150,100);
@@ -79,9 +67,6 @@ public class MainPanel extends JPanel {
         g.drawString("Length:   "+snake.positions.size(),20,getHeight()-60);
         g.drawString("Speed:    "+snake.speed,20,getHeight()-40);
         g.drawString("Time:     "+StepHandler.getTime() ,20,getHeight()-20);
-
-
-
     }
 
 
