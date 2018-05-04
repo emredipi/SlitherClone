@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class Snake {
     MainPanel panel;
     int point=0;
-    int initial_length=100;
+    int initial_length=10;
     static ArrayList<Snake> snakes = new ArrayList<Snake>();
 
 
@@ -36,7 +36,7 @@ public class Snake {
         temp.y=first.getY()+directionY*2;
         positions.add(0,temp);
 
-        Oval head = positions.get(0);
+        Oval head = temp;
         double DifX=head.getCenterX()-panel.getWidth()/2;
         double DifY=head.getCenterY()-panel.getHeight()/2;
 
@@ -47,10 +47,11 @@ public class Snake {
             oval.decrement(DifX,DifY);
         }
 
+        int foodcounter=0;
+        ArrayList<Integer> garbage = new ArrayList<Integer>();
         for (Food food:Food.foods){
             food.x-=directionX;
             food.y-=directionY;
-
 
             double Rx=head.getCenterX()-food.getCenterX();
             double Ry=head.getCenterY()-food.getCenterY();
@@ -61,10 +62,12 @@ public class Snake {
                 food.y=-9999;
                 point+=food.point;
                 update_length();
-                //todo: yemi sil
                 //todo: hızı yavaşlat
             }
-
+            foodcounter++;
+        }
+        for (Integer i:garbage) {
+            Food.foods.remove(i);
         }
     }
 
