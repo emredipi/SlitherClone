@@ -1,6 +1,5 @@
 import java.awt.*;
 import java.awt.event.*;
-import java.util.ArrayList;
 
 public class StepHandler extends MouseMotionAdapter implements KeyListener,ActionListener{
     double angle;
@@ -22,8 +21,6 @@ public class StepHandler extends MouseMotionAdapter implements KeyListener,Actio
         snake.move(angle);
         panel.repaint();
     }
-
-
 
     @Override
     public void mouseMoved(MouseEvent e) {

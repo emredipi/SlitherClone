@@ -28,4 +28,8 @@ public class Food extends Ellipse2D.Double {
     Color getColor(){
         return FoodColors[(point<0)?(point+3):(point+2)];
     }
+    void decrement(double x,double y){
+        this.x-=x;
+        this.y-=y;
+    }
 }

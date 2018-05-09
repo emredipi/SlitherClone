@@ -24,6 +24,8 @@ public class MainPanel extends JPanel {
                             point*food_width
                     )
             );
+            //todo: yemleri haritaya göre yerleştir
+            //todo: yem oluşturma için method yaz
         }
     }
 
@@ -39,6 +41,12 @@ public class MainPanel extends JPanel {
             }
         }
 
+
+        for(Food food:Food.foods){
+            g2.setColor(food.getColor());
+            g2.fill(food);
+        }
+
         int i=0;
         for (Oval oval: snake.positions) {
             g2.setColor((i%10==1||i%10==0)?Color.black:new Color(255,252,78));
@@ -46,27 +54,19 @@ public class MainPanel extends JPanel {
             i++;
         }
 
-
-        for(Food food:Food.foods){
-            g2.setColor(food.getColor());
-            g2.fill(food);
-        }
-
-
-        Graphics2D g2d = (Graphics2D) g;
-        g2d.setComposite(AlphaComposite.getInstance(
+        g2.setComposite(AlphaComposite.getInstance(
                 AlphaComposite.SRC_OVER, 0.3f));
 
-        g2d.setColor(Color.BLACK);
-        g2d.fillRect(0,getHeight()-100,150,100);
-        g2d.setComposite(AlphaComposite.getInstance(
+        g2.setColor(Color.BLACK);
+        g2.fillRect(0,getHeight()-100,150,100);
+        g2.setComposite(AlphaComposite.getInstance(
                 AlphaComposite.SRC_OVER, 1));
 
-        g2d.setColor(Color.WHITE);
-        g.drawString("Score:    "+snake.point,20,getHeight()-80);
-        g.drawString("Length:   "+snake.positions.size(),20,getHeight()-60);
-        g.drawString("Speed:    "+snake.speed,20,getHeight()-40);
-        g.drawString("Time:     "+StepHandler.getTime() ,20,getHeight()-20);
+        g2.setColor(Color.WHITE);
+        g2.drawString("Score:    "+snake.point,20,getHeight()-80);
+        g2.drawString("Length:   "+snake.positions.size(),20,getHeight()-60);
+        g2.drawString("Speed:    "+snake.speed,20,getHeight()-40);
+        g2.drawString("Time:     "+StepHandler.getTime() ,20,getHeight()-20);
     }
 
 

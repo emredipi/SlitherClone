@@ -1,4 +1,3 @@
-import java.awt.*;
 import java.util.ArrayList;
 
 public class Snake {
@@ -47,11 +46,9 @@ public class Snake {
             oval.decrement(DifX,DifY);
         }
 
-        int foodcounter=0;
         ArrayList<Integer> garbage = new ArrayList<Integer>();
         for (Food food:Food.foods){
-            food.x-=directionX;
-            food.y-=directionY;
+            food.decrement(directionX,directionY);
 
             double Rx=head.getCenterX()-food.getCenterX();
             double Ry=head.getCenterY()-food.getCenterY();
@@ -61,10 +58,12 @@ public class Snake {
                 food.x=-9999;
                 food.y=-9999;
                 point+=food.point;
+                if (point<0){
+                    point=0;
+                }
                 update_length();
                 //todo: hızı yavaşlat
             }
-            foodcounter++;
         }
         for (Integer i:garbage) {
             Food.foods.remove(i);
@@ -73,7 +72,7 @@ public class Snake {
 
     public void update_length(){
         int newsize=point/3;
-        if(newsize+initial_length>positions.size()){
+        if(newsize+initial_length>=positions.size()){
             positions.add(new Oval(-9999,-9999,ovalWidth));
         }else{
             positions.remove(positions.size()-1);
