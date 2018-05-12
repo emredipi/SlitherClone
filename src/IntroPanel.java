@@ -1,8 +1,5 @@
-import javafx.scene.control.ComboBox;
-
 import javax.swing.*;
 import java.awt.*;
-import java.util.Collection;
 
 public class IntroPanel extends JPanel {
     JButton button;
