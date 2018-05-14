@@ -17,22 +17,24 @@ public class IntroPanel extends JPanel {
             JPanel leftPanel = new JPanel();
             mainPanel.add(leftPanel);
             leftPanel.setLayout(new BoxLayout(leftPanel,BoxLayout.PAGE_AXIS));
+
                 Dimension dimension = new Dimension(500,50);
                 JTextField text = new JTextField("USERNAME");
                 text.setMaximumSize(dimension);
-                leftPanel.add(text,BorderLayout.NORTH);
+                leftPanel.add(text);
                 text.setFont(new Font("Comic Sans", Font.BOLD, 40));
                 text.setHorizontalAlignment(JTextField.CENTER);
+
                 JComboBox select = new JComboBox();
                 select.setMaximumSize(dimension);
                 leftPanel.add(select);
 
+                JPanel bgpanel = new JPanel();
+                leftPanel.add(bgpanel);
                 ImageIcon image = new ImageIcon("images/bg1.png");
                 JLabel Background = new JLabel(image);
-                Background.setMaximumSize(new Dimension(200,200));
-                leftPanel.add(Background);
-
-                leftPanel.setBackground(Color.black);
+                bgpanel.add(Background);
+                Background.setMaximumSize(new Dimension(400,400));
 
             JPanel rightPanel = new JPanel();
             mainPanel.add(rightPanel);
