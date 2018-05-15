@@ -29,7 +29,7 @@ public class Frame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                //todo server yada oyun olustur
+                JOptionPane.showMessageDialog(null, "Server is on you can join from this ip: "+new Player("ip").getIp(), "Server Successfully Opened", JOptionPane.PLAIN_MESSAGE);
                 new Thread(new Server()).start();
                 System.out.println("Oyun oluşturuldu");
 
@@ -47,6 +47,7 @@ public class Frame extends JFrame {
                 addKeyListener(handler);
                 Timer timer = new Timer(1000/24,handler);
                 timer.start();
+
 
                 bg = intro.bg;
 

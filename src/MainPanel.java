@@ -54,7 +54,7 @@ public class MainPanel extends JPanel {
         g2.setColor(Color.WHITE);
         g2.drawString("Score:    "+MySnake.point,20,getHeight()-80);
         g2.drawString("Length:   "+MySnake.positions.size(),20,getHeight()-60);
-        g2.drawString("Speed:    "+MySnake.speed,20,getHeight()-40);
+        g2.drawString("Trubo:    "+((MyPlayer.isPowerUp())?"ON":"OFF"),20,getHeight()-40);
         g2.drawString("Time:     "+StepHandler.getTime() ,20,getHeight()-20);
     }
 

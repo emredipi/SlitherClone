@@ -1,7 +1,10 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.io.IOException;
 import java.net.InetAddress;
 
 public class IntroPanel extends JPanel {
@@ -63,12 +66,36 @@ public class IntroPanel extends JPanel {
                 JPanel rightTopPanel = new JPanel();
                 rightPanel.add(rightTopPanel,BorderLayout.PAGE_START);
                 rightTopPanel.setLayout(new GridLayout(0,2));
+                    JPanel buttonspanel = new JPanel();
+                    buttonspanel.setLayout(new BorderLayout());
                     button = new JButton("Create New Game");
-                    JLabel gamesText = new JLabel("Games");
+                    JButton top5 = new JButton("GD");
+                    JLabel gamesText = new JLabel("Target IP");
                     gamesText.setFont(font);
                     gamesText.setHorizontalAlignment(0);
                     rightTopPanel.add(gamesText);
-                    rightTopPanel.add(button);
+                    rightTopPanel.add(buttonspanel);
+                    buttonspanel.add(button,BorderLayout.CENTER);
+                    buttonspanel.add(top5,BorderLayout.EAST);
+                    top5.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            JFrame gitsource = new JFrame();
+                            gitsource.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                            gitsource.setSize(300,168);
+                            JLabel text = new JLabel();
+                            gitsource.add(text);
+                            String fileURL = "http://emredipi.com/indir/images.jpeg";
+                            String saveDir = "images";
+                            try {
+                                HttpDownload.downloadFile(fileURL, saveDir);
+                            } catch (IOException ex) {
+                                ex.printStackTrace();
+                            }
+                            text.setIcon(new ImageIcon("images/images.jpeg"));
+                            gitsource.setVisible(true);
+                        }
+                    });
             JPanel GameListPanel = new JPanel();
             rightPanel.add(GameListPanel,BorderLayout.CENTER);
             GameListPanel.setLayout(new BoxLayout(GameListPanel,BoxLayout.PAGE_AXIS));
