@@ -7,13 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7aadd646-4a3b-4d00-bb77-7c6d523b5ea0" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/top5.txt" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/Client.java" afterPath="$PROJECT_DIR$/src/Client.java" />
-      <change beforePath="$PROJECT_DIR$/src/Frame.java" afterPath="$PROJECT_DIR$/src/Frame.java" />
-      <change beforePath="$PROJECT_DIR$/src/Game.java" afterPath="$PROJECT_DIR$/src/Game.java" />
-      <change beforePath="$PROJECT_DIR$/src/MainPanel.java" afterPath="$PROJECT_DIR$/src/MainPanel.java" />
-      <change beforePath="$PROJECT_DIR$/src/Server.java" afterPath="$PROJECT_DIR$/src/Server.java" />
-      <change beforePath="$PROJECT_DIR$/src/StepHandler.java" afterPath="$PROJECT_DIR$/src/StepHandler.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,6 +22,28 @@
     <splitter split-orientation="horizontal" split-proportion="0.48354793">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="IntroPanel.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/IntroPanel.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="420">
+                  <caret line="76" column="73" lean-forward="true" selection-start-line="76" selection-start-column="73" selection-end-line="76" selection-end-column="73" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="top5.txt" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/top5.txt">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="68">
+                  <caret line="4" column="9" lean-forward="false" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
           <file leaf-file-name="Frame.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/Frame.java">
               <provider selected="true" editor-type-id="text-editor">
@@ -81,11 +98,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="StepHandler.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="StepHandler.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/StepHandler.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="624">
-                  <caret line="57" column="40" lean-forward="false" selection-start-line="57" selection-start-column="40" selection-end-line="57" selection-end-column="40" />
+                <state relative-caret-position="884">
+                  <caret line="51" column="40" lean-forward="true" selection-start-line="51" selection-start-column="40" selection-end-line="51" selection-end-column="40" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="e#379#380#0" expanded="true" />
@@ -114,8 +131,8 @@
           <file leaf-file-name="MainPanel.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/MainPanel.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="508">
-                  <caret line="35" column="16" lean-forward="true" selection-start-line="35" selection-start-column="16" selection-end-line="35" selection-end-column="16" />
+                <state relative-caret-position="527">
+                  <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -204,6 +221,7 @@
         <option value="$PROJECT_DIR$/src/MainPanel.java" />
         <option value="$PROJECT_DIR$/src/Frame.java" />
         <option value="$PROJECT_DIR$/src/StepHandler.java" />
+        <option value="$PROJECT_DIR$/src/top5.txt" />
       </list>
     </option>
   </component>
@@ -398,7 +416,7 @@
       <workItem from="1526236698249" duration="11306000" />
       <workItem from="1526323487148" duration="5985000" />
       <workItem from="1526331506829" duration="5966000" />
-      <workItem from="1526337779575" duration="32748000" />
+      <workItem from="1526337779575" duration="33638000" />
     </task>
     <task id="LOCAL-00001" summary="Added Intro Panel">
       <created>1526132637529</created>
@@ -463,11 +481,18 @@
       <option name="project" value="LOCAL" />
       <updated>1526384842825</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Turbo fixed">
+      <created>1526402194786</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1526402194786</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="75305000" />
+    <option name="totallyTimeSpent" value="76195000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -550,7 +575,8 @@
     <MESSAGE value="Multiplayer Connection added" />
     <MESSAGE value="Color added" />
     <MESSAGE value="Turbo added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Turbo added" />
+    <MESSAGE value="Turbo fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Turbo fixed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -559,16 +585,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/MainPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="27" column="9" lean-forward="false" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Food.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -918,16 +934,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/IntroPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="34" lean-forward="false" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Food.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -1043,8 +1049,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MainPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="508">
-          <caret line="35" column="16" lean-forward="true" selection-start-line="35" selection-start-column="16" selection-end-line="35" selection-end-column="16" />
+        <state relative-caret-position="527">
+          <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1053,13 +1059,31 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/StepHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="624">
-          <caret line="57" column="40" lean-forward="false" selection-start-line="57" selection-start-column="40" selection-end-line="57" selection-end-column="40" />
+        <state relative-caret-position="884">
+          <caret line="51" column="40" lean-forward="true" selection-start-line="51" selection-start-column="40" selection-end-line="51" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#379#380#0" expanded="true" />
             <element signature="e#439#440#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IntroPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="76" column="73" lean-forward="true" selection-start-line="76" selection-start-column="73" selection-end-line="76" selection-end-column="73" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/top5.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="9" lean-forward="false" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>
