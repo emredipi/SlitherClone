@@ -1,14 +1,14 @@
 import javax.swing.*;
-import javax.swing.event.PopupMenuEvent;
-import javax.swing.event.PopupMenuListener;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.net.InetAddress;
 
 public class IntroPanel extends JPanel {
     JButton button;
+    JButton JoinButton;
+    JTextField Name;
+    int bg=1;
     IntroPanel(){
         Font font = new Font("Comic Sans MS", Font.BOLD, 40);
         setLayout(new GridLayout(2,0));
@@ -25,11 +25,11 @@ public class IntroPanel extends JPanel {
             leftPanel.setLayout(new BoxLayout(leftPanel,BoxLayout.PAGE_AXIS));
 
                 Dimension dimension = new Dimension(500,50);
-                JTextField text = new JTextField("USERNAME");
-                text.setMaximumSize(dimension);
-                leftPanel.add(text);
-                text.setFont(new Font("Comic Sans", Font.BOLD, 40));
-                text.setHorizontalAlignment(JTextField.CENTER);
+                Name = new JTextField("USERNAME");
+                Name.setMaximumSize(dimension);
+                leftPanel.add(Name);
+                Name.setFont(new Font("Comic Sans", Font.BOLD, 40));
+                Name.setHorizontalAlignment(JTextField.CENTER);
 
                 String background[] ={
                   "Blue", "Cyan", "Orange","Red","Green","Yellow"
@@ -50,7 +50,9 @@ public class IntroPanel extends JPanel {
                 select.addItemListener(new ItemListener() {
                     @Override
                     public void itemStateChanged(ItemEvent e) {
-                        Background.setIcon(new ImageIcon("images/bg"+(select.getSelectedIndex()+1)+".png"));
+                        int selected =(select.getSelectedIndex()+1);
+                        Background.setIcon(new ImageIcon("images/bg"+selected+".png"));
+                        bg = selected;
                     }
                 });
 
@@ -74,23 +76,23 @@ public class IntroPanel extends JPanel {
                 Dimension GameListDimension = new Dimension(10000,30);
                 Font GameFont = new Font("Comic Sans MS", Font.BOLD, 20);
 
-                for (int i=0;i<5;i++){
-                    JPanel GameItemPanel = new JPanel();
-                    GameItemPanel.setMaximumSize(GameListDimension);
-                    GameListPanel.add(GameItemPanel);
-                    GameItemPanel.setBackground(Color.orange);
-                    GameItemPanel.setLayout(new GridLayout(0,2));
-                    JLabel GameLabel = new JLabel("Game Name");
-                    GameLabel.setFont(GameFont);
-                    GameLabel.setHorizontalAlignment(0);
-                    JButton JoinButton = new JButton("Join");
-                    GameItemPanel.add(GameLabel);
+
+                JoinButton = new JButton("Join");
+                JTextField serverip = new JTextField();
+                JPanel GameItemPanel = new JPanel();
+                GameItemPanel.setMaximumSize(GameListDimension);
+                GameListPanel.add(GameItemPanel);
+                GameItemPanel.setBackground(Color.orange);
+                GameItemPanel.setLayout(new GridLayout(0,2));
+                try{
+                    String ip =InetAddress.getLocalHost().getHostAddress();
+                    serverip.setHorizontalAlignment(0);
+                    serverip.setText(ip);
+                    GameItemPanel.add(serverip);
                     GameItemPanel.add(JoinButton);
+                }catch (Exception e){
+
                 }
-
-
-
-
 
     }
 }

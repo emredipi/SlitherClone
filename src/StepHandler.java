@@ -1,33 +1,43 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.util.concurrent.Executors;
 
 public class StepHandler extends MouseMotionAdapter implements KeyListener,ActionListener{
     double angle;
-    MainPanel panel=Frame.panel;
-    Snake snake=panel.snake;
+    Player player;
+    Client client;
 
-
-
+    StepHandler(Player player){
+        this.player=player;
+        client = new Client();
+        client.sendToServer(player);
+    }
     static int second=0;
     static String getTime(){
         return (second/60/24)+" : "+((second/24)%60);
     }
 
-
-
     @Override
     public void actionPerformed(ActionEvent e) {
         second++;
-        snake.move(angle);
-        panel.repaint();
+        client.sendToServer(player);
+        Frame.panel.repaint();
     }
 
     @Override
     public void mouseMoved(MouseEvent e) {
         Point p = MouseInfo.getPointerInfo().getLocation();
-        double x = p.x-panel.getWidth()/2;
-        double y = p.y-panel.getHeight()/2;
+        double x=0;
+        double y=0;
+        try{
+            x = p.x-Frame.panel.getWidth()/2;
+            y = p.y-Frame.panel.getHeight()/2;
+        }catch (Exception e2){
+
+        }
+
         angle=Math.atan2(x,y);
+        player.setDegree(angle);
     }
 
     @Override
@@ -42,14 +52,6 @@ public class StepHandler extends MouseMotionAdapter implements KeyListener,Actio
         }else if(e.getKeyCode()==KeyEvent.VK_RIGHT){
             angle-=0.3;
         }
-
-        /*
-        else if(e.getKeyCode()==KeyEvent.VK_SPACE){
-
-            moveSnake();
-            Main.panel.repaint();
-        }
-        */
     }
 
     @Override

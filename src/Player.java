@@ -1,16 +1,16 @@
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-
-public class User {
+import java.io.*;
+public class Player implements Serializable {
     private String Name;
     private boolean PowerUp;
     private double Degree;
     private String ip;
 
-    public User(String name) {
+    Player(String name) {
         setName(name);
         try {
-            setIp(InetAddress.getLocalHost().toString());
+            setIp(InetAddress.getLocalHost().getHostAddress());
         }catch (UnknownHostException e){
             System.err.println("Unknown Host Exception: "+e.getMessage());
         }

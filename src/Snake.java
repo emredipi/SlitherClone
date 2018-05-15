@@ -1,18 +1,18 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Snake {
-    MainPanel panel;
+public class Snake implements Serializable{
     int point=0;
     int initial_length=10;
     static ArrayList<Snake> snakes = new ArrayList<Snake>();
 
-
     ArrayList<Oval> positions = new ArrayList<Oval>();
     int ovalWidth;
     int speed;
+    Player player;
 
-    Snake(int ovalWidth,MainPanel panel){
-        this.panel=panel;
+    Snake(int ovalWidth,Player player){
+        this.player=player;
         this.ovalWidth=ovalWidth;
         for (int i=0;i<initial_length;i++){
             positions.add(
@@ -24,9 +24,9 @@ public class Snake {
         snakes.add(this);
     }
 
-    void move(double angle){
-        double directionX = Math.sin(angle)*5;
-        double directionY = Math.cos(angle)*5;
+    void move(){
+        double directionX = Math.sin(player.getDegree())*5;
+        double directionY = Math.cos(player.getDegree())*5;
 
         Oval temp = positions.remove(positions.size()-1);
         Oval first = positions.get(0);
@@ -36,15 +36,15 @@ public class Snake {
         positions.add(0,temp);
 
         Oval head = temp;
-        double DifX=head.getCenterX()-panel.getWidth()/2;
-        double DifY=head.getCenterY()-panel.getHeight()/2;
+        //double DifX=head.getCenterX()-panel.getWidth()/2;
+        //double DifY=head.getCenterY()-panel.getHeight()/2;
 
-        panel.x-=DifX;
-        panel.y-=DifY;
+        //panel.x-=DifX;
+        //panel.y-=DifY;
 
-        for (Oval oval: positions) {
-            oval.decrement(DifX,DifY);
-        }
+        //for (Oval oval: positions) {
+        //    oval.decrement(DifX,DifY);
+        //}
 
         ArrayList<Integer> garbage = new ArrayList<Integer>();
         for (Food food:Food.foods){
