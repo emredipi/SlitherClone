@@ -19,10 +19,8 @@ public class StepHandler extends MouseMotionAdapter implements KeyListener,Actio
     @Override
     public void actionPerformed(ActionEvent e) {
         second++;
+        player.setDegree(angle);
         client.sendToServer(player);
-
-        // food.decrement(directionX,directionY);
-
         Frame.panel.repaint();
     }
 
@@ -37,9 +35,7 @@ public class StepHandler extends MouseMotionAdapter implements KeyListener,Actio
         }catch (Exception e2){
             System.err.println("Hata:" +e2.getMessage());
         }
-
         angle=Math.atan2(x,y);
-        player.setDegree(angle);
     }
 
     @Override
@@ -50,18 +46,22 @@ public class StepHandler extends MouseMotionAdapter implements KeyListener,Actio
     @Override
     public void keyPressed(KeyEvent e) {
         if(e.getKeyCode()==KeyEvent.VK_LEFT){
+            System.out.println("left");
             angle+=0.3;
         }else if(e.getKeyCode()==KeyEvent.VK_RIGHT){
+            System.out.println("right");
             angle-=0.3;
         }else if(e.getKeyCode()==KeyEvent.VK_SPACE){
-            player.setPowerUp(true);
+            if (player.isPowerUp()){
+                player.setPowerUp(false);
+            }else{
+                player.setPowerUp(true);
+            }
         }
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-        if(e.getKeyCode()==KeyEvent.VK_SPACE){
-            player.setPowerUp(false);
-        }
+
     }
 }

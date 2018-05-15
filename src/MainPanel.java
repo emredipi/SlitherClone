@@ -9,6 +9,7 @@ public class MainPanel extends JPanel {
     static Player MyPlayer;
     static Snake MySnake;
     MainPanel(Player player){
+        Frame.panel=this;
         MyPlayer=player;
         MySnake=Frame.game.snakeList.get(Frame.game.players.get(player.getIp()));
     }
@@ -20,23 +21,9 @@ public class MainPanel extends JPanel {
         int bg_width=20;
 
 
-        Snake mysnake=MainPanel.MySnake;
-        Oval head=mysnake.positions.get(0);
-        double DifX=head.getCenterX()-Frame.panel.getWidth()/2;
-        double DifY=head.getCenterY()-Frame.panel.getHeight()/2;
 
-        head.x=Frame.panel.getWidth()/2;
-        Frame.panel.x=DifX;
-        Frame.panel.y=DifY;
 
-        int i=0;
-        for (Oval oval: MySnake.positions) {
-            g2.setColor((i%10==1||i%10==0)?Color.black:new Color(255,254,102));
-            g2.fill(oval);
-            i++;
-        }
-
-        for ( i=-1*bg_width;i<bg_width;i++){
+        for (int i=-1*bg_width;i<bg_width;i++){
             for (int j=-1*bg_width;j<bg_width;j++){
                 g2.drawImage(bg,(int)x+j*250,(int)y+i*250,Color.BLACK,this);
             }
@@ -46,8 +33,9 @@ public class MainPanel extends JPanel {
             g2.setColor(food.getColor());
             g2.fill(food);
         }
-
-        for (Snake snake:Frame.game.snakeList){
+        int i=0;
+        for (Snake snake:Frame.game.snakeList)
+        {
             for (Oval oval: snake.positions) {
                 g2.setColor((i%10==1||i%10==0)?Color.black:snake.color);
                 g2.fill(oval);

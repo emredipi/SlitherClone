@@ -43,10 +43,10 @@ public class Frame extends JFrame {
                 player=new Player(intro.Name.getText().toString());
                 StepHandler handler = new StepHandler(player);
                 panel = new MainPanel(player);
-                Timer timer = new Timer(1000/24,handler);
-                timer.start();
                 addMouseMotionListener(handler);
                 addKeyListener(handler);
+                Timer timer = new Timer(1000/24,handler);
+                timer.start();
 
                 bg = intro.bg;
 

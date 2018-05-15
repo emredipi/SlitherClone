@@ -45,7 +45,6 @@ public class Game implements Serializable{
     void move_snakes(){
         for (Snake snake: snakeList) {
             if(snake.player.isPowerUp()){
-                System.out.println("yes");
                 snake.move();
             }
             snake.move();
