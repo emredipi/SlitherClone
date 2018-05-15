@@ -42,7 +42,6 @@ public class MainPanel extends JPanel {
             }
         }
 
-
         for(Food food:Frame.game.foods){
             g2.setColor(food.getColor());
             g2.fill(food);

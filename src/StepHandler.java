@@ -53,11 +53,15 @@ public class StepHandler extends MouseMotionAdapter implements KeyListener,Actio
             angle+=0.3;
         }else if(e.getKeyCode()==KeyEvent.VK_RIGHT){
             angle-=0.3;
+        }else if(e.getKeyCode()==KeyEvent.VK_SPACE){
+            player.setPowerUp(true);
         }
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-
+        if(e.getKeyCode()==KeyEvent.VK_SPACE){
+            player.setPowerUp(false);
+        }
     }
 }
