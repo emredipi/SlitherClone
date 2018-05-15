@@ -14,7 +14,6 @@ public class Game implements Serializable{
 
 
     void addUser(Player player){
-        System.out.println("1,,,,"+player.getDegree());
         if (players.containsKey(player.getIp())){
             int id=players.get(player.getIp());
             snakeList.get(id).player=player;
@@ -22,12 +21,6 @@ public class Game implements Serializable{
             players.put(player.getIp(),counter++);
             snakeList.add(new Snake(30,player));
         }
-
-        for (Snake snake:
-                snakeList) {
-            System.out.println("2,,,"+snake.player.getDegree());;
-        }
-
     }
 
     Game(){

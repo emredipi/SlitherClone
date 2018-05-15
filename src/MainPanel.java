@@ -1,16 +1,13 @@
 import java.awt.Image;
-import java.awt.Toolkit;
 import javax.swing.*;
 import java.awt.*;
-import java.security.SecureRandom;
 
 public class MainPanel extends JPanel {
-    int ovalWidth=30;
     Image bg;
     double x = 0;
     double y = 0;
-    Player MyPlayer;
-    Snake MySnake;
+    static Player MyPlayer;
+    static Snake MySnake;
     MainPanel(Player player){
         MyPlayer=player;
         MySnake=Frame.game.snakeList.get(Frame.game.players.get(player.getIp()));
@@ -21,7 +18,25 @@ public class MainPanel extends JPanel {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D)g;
         int bg_width=20;
-        for (int i=-1*bg_width;i<bg_width;i++){
+
+
+        Snake mysnake=MainPanel.MySnake;
+        Oval head=mysnake.positions.get(0);
+        double DifX=head.getCenterX()-Frame.panel.getWidth()/2;
+        double DifY=head.getCenterY()-Frame.panel.getHeight()/2;
+
+        head.x=Frame.panel.getWidth()/2;
+        Frame.panel.x=DifX;
+        Frame.panel.y=DifY;
+
+        int i=0;
+        for (Oval oval: MySnake.positions) {
+            g2.setColor((i%10==1||i%10==0)?Color.black:new Color(255,254,102));
+            g2.fill(oval);
+            i++;
+        }
+
+        for ( i=-1*bg_width;i<bg_width;i++){
             for (int j=-1*bg_width;j<bg_width;j++){
                 g2.drawImage(bg,(int)x+j*250,(int)y+i*250,Color.BLACK,this);
             }
@@ -34,9 +49,8 @@ public class MainPanel extends JPanel {
         }
 
         for (Snake snake:Frame.game.snakeList){
-            int i=0;
             for (Oval oval: snake.positions) {
-                g2.setColor((i%10==1||i%10==0)?Color.black:new Color(255,254,102));
+                g2.setColor((i%10==1||i%10==0)?Color.black:snake.color);
                 g2.fill(oval);
                 i++;
             }

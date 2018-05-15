@@ -1,6 +1,5 @@
 import java.awt.*;
 import java.awt.event.*;
-import java.util.concurrent.Executors;
 
 public class StepHandler extends MouseMotionAdapter implements KeyListener,ActionListener{
     double angle;
@@ -21,6 +20,9 @@ public class StepHandler extends MouseMotionAdapter implements KeyListener,Actio
     public void actionPerformed(ActionEvent e) {
         second++;
         client.sendToServer(player);
+
+        // food.decrement(directionX,directionY);
+
         Frame.panel.repaint();
     }
 
@@ -33,7 +35,7 @@ public class StepHandler extends MouseMotionAdapter implements KeyListener,Actio
             x = p.x-Frame.panel.getWidth()/2;
             y = p.y-Frame.panel.getHeight()/2;
         }catch (Exception e2){
-
+            System.err.println("Hata:" +e2.getMessage());
         }
 
         angle=Math.atan2(x,y);

@@ -11,7 +11,8 @@ public class Client{
         //todo: obje her seferinde tekrar oluşturulmamalı
     }
 
-    void sendToServer(Object o){
+    Game sendToServer(Object o){
+        Game game = Frame.game;
         try{
             s= new Socket(serverAddressIP,9999);
             os = s.getOutputStream();
@@ -20,6 +21,7 @@ public class Client{
             InputStream is = s.getInputStream();
             ObjectInputStream ois = new ObjectInputStream(is);
             Frame.game = (Game) ois.readObject();
+            game=Frame.game;
             is.close();
             s.close();
             oos.close();
@@ -27,6 +29,9 @@ public class Client{
             s.close();
         }catch (Exception e){
             System.out.println("Hata: "+e.getMessage());
+        }
+        finally {
+            return game;
         }
     }
 }

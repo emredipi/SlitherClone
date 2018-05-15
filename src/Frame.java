@@ -2,7 +2,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.HashMap;
 
 public class Frame extends JFrame {
 
@@ -50,8 +49,6 @@ public class Frame extends JFrame {
                 addKeyListener(handler);
 
                 bg = intro.bg;
-
-
 
                 panel.bg = Toolkit.getDefaultToolkit().getImage("images/bg"+bg+".png");
                 remove(intro);
