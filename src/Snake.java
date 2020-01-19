@@ -40,12 +40,8 @@ public class Snake implements Serializable{
         positions.add(0,temp);
         Oval head = temp;
 
-
-
         ArrayList<Integer> garbage = new ArrayList<Integer>();
         for (Food food:Food.foods){
-
-
             double Rx=head.getCenterX()-food.getCenterX();
             double Ry=head.getCenterY()-food.getCenterY();
             double R = Math.sqrt(Rx*Rx+Ry*Ry);

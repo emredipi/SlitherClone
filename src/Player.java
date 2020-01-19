@@ -15,13 +15,13 @@ public class Player implements Serializable {
         SecureRandom rand = new SecureRandom();
         setName(name);
         try {
-            setIp(InetAddress.getLocalHost().getHostAddress());
+            setIp(InetAddress.getLocalHost().getHostAddress()+rand.nextInt(1000));
         }catch (UnknownHostException e){
             System.err.println("Unknown Host Exception: "+e.getMessage());
         }
         color=new Color(rand.nextInt(250),rand.nextInt(250),rand.nextInt(250));
-
     }
+
     public Color getColor() {
         return color;
     }

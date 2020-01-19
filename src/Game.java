@@ -9,15 +9,15 @@ public class Game implements Serializable{
     static int food_width=10;
 
     int counter;
-    HashMap<String,Integer> players = new HashMap<>();
+    HashMap<String,Integer> players = new HashMap<>();//IP and ID
     ArrayList<Snake> snakeList = new ArrayList<>();
 
-
     void addUser(Player player){
-        if (players.containsKey(player.getIp())){
+        if (players.containsKey(player.getIp())){ //Old Player
             int id=players.get(player.getIp());
             snakeList.get(id).player=player;
-        }else{
+        }else{ // New Player
+            System.out.println("Oyuna yeni biri bağlandı: "+player.getName());
             players.put(player.getIp(),counter++);
             snakeList.add(new Snake(30,player));
         }
@@ -34,10 +34,10 @@ public class Game implements Serializable{
         int sign=(rand.nextInt(2)==0)?-1:1;
         int point=rand.nextInt(3)+1;
         foods.add(new Food(
-                        rand.nextInt(3000),
-                        rand.nextInt(3000),
-                        point*sign,
-                        point*food_width
+                rand.nextInt(3000),
+                rand.nextInt(3000),
+                point*sign,
+                point*food_width
                 )
         );
     }
